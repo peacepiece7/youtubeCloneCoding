@@ -8,8 +8,14 @@ function handleListening(){
 }
 function handleHome(request,responsive){
     console.log(request)
-    responsive.send('hellow')
+    responsive.send('hellow this page is home')
+}
+
+function handleProfile(req,res){
+    console.log(req);
+    res.send('hellow from profile')
 }
 app.get('/',handleHome)
+app.get('/prpfile',handleProfile)
 
 app.listen(PORT, handleListening);
