@@ -3,9 +3,10 @@ import routes from "/Users/taetae/Desktop/youtubeCloneCoding/routes.js";
 
 const videoRouter = express.Router();
 
-videoRouter.get(routes.videos, (req,res) => res.send("videos!"));
-videoRouter.get(routes.videoDetail, (req,res) => res.send("video Detail!"));
-videoRouter.get(routes.editVideo, (req,res) => res.send("edit Video!"));
-videoRouter.get(routes.deleteVideo, (req,res) => res.send("delete Video!"));
+videoRouter.get(routes.videos, (req,res) => res.send('video!'));
+videoRouter.get(routes.upload, (req,res) => res.send('uploads!'));
+videoRouter.get(routes.videoDetail, (req,res) => res.send('videoDetail!'));
+videoRouter.get(routes.editVideo, (req,res) => res.send('editVideo!'));
+videoRouter.get(routes.deleteVideo, (req,res) => res.send('deleteVideo!'));
 
-export default videoRouter;
+export default videoRouter

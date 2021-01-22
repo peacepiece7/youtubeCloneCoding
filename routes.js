@@ -8,7 +8,7 @@ const SEARCH = "/search";
 // User
 
 const USERS = "/users";
-const USER_DETAIL = "/:id";
+const USER_DETAIL = "/:id"
 const EDIT_PROFILE = "/edit-profile";
 const CHANGE_PASSWORD = "/change-password";
 
@@ -32,8 +32,8 @@ const routes = {
     userDetail : USER_DETAIL,
     editprofile : EDIT_PROFILE,
     changePassword : CHANGE_PASSWORD,
-    upload : UPLOAD,
     videos : VIDEOS,
+    upload : UPLOAD,
     videoDetail : VIDEO_DETAIL,
     editVideo : EDIT_VIDEO,
     deleteVideo : DELETE_VIDEO
