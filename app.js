@@ -1,41 +1,29 @@
 import express from "express";
-import morgan from "morgan";
-import helmet from "helmet";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
-import routes from "./routes"
 import globalRouter from "./routers/globalRouter"
-import videoRouter from "./routers/videoRouter"
+import helmet from "helmet";
+import { localMiddleware } from "./middleware";
+import morgan from "morgan";
+import routes from "./routes"
 import userRouter from "./routers/userRouter"
-
-const middleG = (req,res,next) => {
-    console.log('global used!!!!!')
-    next()
-}
-const middleV = (req,res,next) => {
-    console.log('video used!!!!!')
-    next()
-}
-const middleU = (req,res,next) => {
-    console.log('user used!!!!!')
-    next()
-}
+import videoRouter from "./routers/videoRouter"
 
 const app = express();
 
 app.set("view engine","pug")
 
+app.use(helmet());
 app.use(cookieParser())
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
-app.use(helmet());
 app.use(morgan("dev"));
 
 
-
-app.use(routes.home,middleG,globalRouter);
-app.use(routes.videos,middleV,videoRouter);
-app.use(routes.users,middleU,userRouter)
+app.use(localMiddleware)
+app.use(routes.home,globalRouter);
+app.use(routes.videos,videoRouter);
+app.use(routes.users,userRouter)
 
 
 export default app;
