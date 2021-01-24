@@ -1,12 +1,13 @@
 import express from "express";
+import { changePassword, editProfile, userDetail, users } from "../controllers/userController";
 import routes from "/Users/taetae/Desktop/youtubeCloneCoding/routes.js";
 
 const userRouter = express.Router();
 
 // global Router
-userRouter.get(routes.users, (req,res) => res.send('users!'));
-userRouter.get(routes.userDetail, (req,res) => res.send('userDetail!'));
-userRouter.get(routes.editprofile, (req,res) => res.send('editprofile!'));
-userRouter.get(routes.changePassword, (req,res) => res.send('changePassword!'));
+userRouter.get(routes.users, users);
+userRouter.get(routes.userDetail, userDetail);
+userRouter.get(routes.editProfile, editProfile);
+userRouter.get(routes.changePassword, changePassword);
 
 export default userRouter

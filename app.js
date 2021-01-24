@@ -21,10 +21,9 @@ const middleU = (req,res,next) => {
     next()
 }
 
-
 const app = express();
 
-//express.Router().get("/test",(req,res) => res.send('test router'));
+app.set("view engine","pug")
 
 app.use(cookieParser())
 app.use(bodyParser.urlencoded({extended:true}));
