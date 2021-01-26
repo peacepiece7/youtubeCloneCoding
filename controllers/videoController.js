@@ -1,4 +1,7 @@
-export const home = (req,res) => res.render("home",{pageTitle: "Home"});
+import videoDB from "../fakeDB"
+
+
+export const home = (req,res) => res.render("home",{pageTitle: "Home",videoDB});
 export const search = (req,res) => {
     const { query: { term: searchingBy}} = req;
     // const searchingBy = query.term.term 윗 줄과 동일한 내용임!

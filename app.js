@@ -19,6 +19,12 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 app.use(morgan("dev"));
 
+const contentSecurityPolicy = (req,res,next) => {
+    res.setHeader("Content-Security-Policy","script-src 'self' https://archive.org");
+    next()
+}
+app.use(contentSecurityPolicy)
+
 
 app.use(localMiddleware)
 
