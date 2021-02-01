@@ -1,8 +1,12 @@
-import videoDB from "../fakeDB"
+import "../db"
 import routes from "../routes"
 
 
-export const home = (req,res) => res.render("home",{pageTitle: "Home",videoDB});
+export const home = (req,res) => {
+    res.render("home",{pageTitle: "Home",videoDB});
+    console.log(videoDB)
+}
+
 export const search = (req,res) => {
     const { query: { term: searchingBy}} = req;
     // const searchingBy = query.term.term 윗 줄과 동일한 내용임!
