@@ -8,7 +8,8 @@ mongoose.connect(
     MONGO_URL,
     {
     useNewUrlParser: true,
-    useFindAndModify: false
+    useFindAndModify: false,
+    useUnifiedTopology: true 
 }
 );
 
