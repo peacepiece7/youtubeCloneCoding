@@ -11,26 +11,23 @@ import videoRouter from "./routers/videoRouter"
 
 const app = express();
 
-app.set("view engine","pug")
-app.use("/uploads", express.static("uploads"))
-app.use(helmet());
-app.use(cookieParser())
-app.use(bodyParser.urlencoded({extended:true}));
-app.use(bodyParser.json());
-app.use(morgan("dev"));
-
-const contentSecurityPolicy = (req,res,next) => {
-    res.setHeader("Content-Security-Policy","script-src 'self' https://archive.org");
+app.set("view engine", "pug");
+app.use("/uploads", express.static("uploads"));
+app.use('/static', express.static('static'));
+const contentSecurityPolicy = (req, res, next) => {
+    res.setHeader("Content-Security-Policy", "script-src 'self' https://archive.org");
     next()
 }
 app.use(contentSecurityPolicy)
-
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(morgan("dev"));
 
 app.use(localMiddleware)
 
-app.use(routes.home,globalRouter);
-app.use(routes.users,userRouter);
-app.use(routes.videos,videoRouter);
-
+app.use(routes.home, globalRouter);
+app.use(routes.users, userRouter);
+app.use(routes.videos, videoRouter);
 
 export default app;
